@@ -1,18 +1,85 @@
 body {
-    background: #eee;
+    background: #333;
     text-align: center;
     padding: 0 25px;
     font-family: arial, sans-serif;
+}
+/*navbar*/
+.navUl {
+    overflow: hidden;
+    /*background-color: #333;*/
+    list-style-type: none;
+    width: 95%;
+    margin-top: -7%;
+    margin-left: -10%;
+
+}
+
+.navLi {
+    float: left;
+}
+
+.navLi a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navLi a:hover {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color: #222;
+}
+/*end navbar*/
+
+.container {
+}
+
+.title {
+    font-family: 'Kaushan Script', cursive;
+    color: #fff;
+    margin-top: -5% !important;
+    /*margin-bottom: 5% !important;*/
+}
+
+#main {
+    background-color: #555;
+    border-bottom: 1px solid #fff;
+}
+
+#chats: {
+    background-color: #fff;
+}
+
+.chatUl {
+    width: 88%;
+    height: 435px;
+    overflow: scroll;
+}
+
+.chat {
+    background-color: #fff;
+    list-style-type: none;
+    min-height: 40px;
+}
+
+.userTitle {}
+h3 {
+    padding-left: 10%;
+    color: #fff;
 }
 
 #main, #chats {
     width: 500px;
     margin: auto;
     text-align: left;
-    background: white;
     padding: 50px 60px;
-    border: solid #ddd;
-    border-width: 0 1px 1px 1px;
+    background-color: #555;
 }
 
 #main h1 {
@@ -86,5 +153,29 @@ form input[type=text] {
 .friend {
     color: #fff;
     background-color: #0090da;
+}
+
+.container {
+}
+
+.title {
+    font-family: 'Kaushan Script', cursive;
+    color: #fff;
+}
+
+#main {
+    background-color: #555;
+    border-bottom: 1px solid #fff;
+}
+
+#chats: {
+    background-color: #fff;
+    overflow: scroll;
+}
+
+.chat {
+    background-color: #fff;
+    list-style-type: none;
+    min-height: 40px;
 }
 
