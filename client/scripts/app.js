@@ -13,33 +13,42 @@
         // console.log(this.fetch().val());
         // $(".chatUl").prepend('<li class="chat">' + message.username + ': ' + message.text + '</li>');
         // $(".sendMessage").click(function(event) {
-          var newMessage = app.fetch();
+          // var newMessage = app.fetch();
 
           //getting chat data from server//
 
           //loop throutgh this.fetch data
           // set each element to connect to li and prepend to the unordered list
 
-
+          $( ".newMessage" ).submit(function( event ) {
+            event.preventDefault();
+            app.ourMessage.text = $(this).find('.chatInput').val();
+            app.send();
+          });
 
 
             //prepending username + newmessage inside of li to the chat ul
-            $(".chatUl").prepend('<li class="chat">' + message.username + ': ' + newMessage + '</li>');
+            // $(".chatUl").prepend('<li class="chat">' + message.username + ': ' + newMessage + '</li>');
             // this.send();
             //connect out message to this.send data (newMessage or separate variable
 
-        console.log(newMessage, 'test')
+        // console.log(newMessage, 'test')
       });
 
 let app = {
+  ourMessage : {
+      username: 'fishsticks',
+      text: "words",
+      roomname: 'floor 6'
+    },
   server: 'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages',
 	init: function() {},
-  send: function(newMessage) {
+  send: function() {
     $.ajax({
       // This is the url you should use to communicate with the parse API server.
       url: 'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages',
       type: 'POST',
-      data: JSON.stringify(newMessage),
+      data: JSON.stringify(app.ourMessage),
       contentType: 'application/json',
       success: function (data) {
         console.log('chatterbox: Message sent');
@@ -50,12 +59,13 @@ let app = {
       }
     });
   },
+  //'order=-createdAt'
   fetch: function() {
         $.ajax({
       // This is the url you should use to communicate with the parse API server.
       url: 'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages',
       type: 'GET',
-      data: 'order=-createdAt',
+      data: 'order=-createdAt',//'where={"username":"hrsf86"}',
       contentType: 'application/json',
       success: function (data) {
         let allMessages = data.results;
@@ -83,10 +93,10 @@ let app = {
 
 // POST request format
 
-var message = {
-  username: 'hrsf86',
-  text: 'test message',
-  roomname: 'floor 6'
-};
-//app.send(message);
+// var ourMessage = {
+//   username: 'hrsf86',
+//   text: $('.chatInput').val(),
+//   roomname: 'floor 6'
+// };
+app.fetch();
 
