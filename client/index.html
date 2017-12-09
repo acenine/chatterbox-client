@@ -4,10 +4,9 @@
     <meta charset="utf-8">
     <title>Chatterbox</title>
     <link rel="stylesheet" href="styles/styles.css">
+    <link href="bower_components/jquery/dist/jquery.js">
     <link href="bower_components/underscore/underscore.js">
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Raleway|Roboto" rel="stylesheet">
-
-    <!-- dependencies -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
@@ -20,23 +19,6 @@
         newSearch += 'username=' + (prompt('What is your name?') || 'anonymous');
         window.location.search = newSearch;
       }
-      $(document).ready(() => {
-        $(".chatUl").prepend('<li class="chat">' + message.username + ': ' + message.text + '</li>');
-        $(".sendMessage").click(function(event) {
-          let newMessage = $('#chatInput').val();
-          if(newMessage.length > 0) {
-            $(".chatUl").prepend('<li class="chat">' + message.username + ': ' + newMessage + '</li>');
-            app.send(newMessage);
-            // $('#chatInput').val("")
-          }
-        });
-      });
-      // document.ready(function() {
-      //   $('#home').on('click', function() {
-      //     alert('working');
-      //     // location.reload();
-      //   });
-      // })
 
     </script>
     <!-- your scripts -->
