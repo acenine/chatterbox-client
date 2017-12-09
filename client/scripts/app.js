@@ -5,18 +5,29 @@
 // 	// name = (prompt('What is your name?')
 // }
       $(document).ready(() => {
+        $(".clearMessages").click(function(){
+          $(".chatUl").html("");
+        });
+
         // app.call(this);
-        app.fetch();
+        // console.log(this.fetch().val());
         $(".chatUl").prepend('<li class="chat">' + message.username + ': ' + message.text + '</li>');
         // $(".sendMessage").click(function(event) {
-          var newMessage = app.allMessages;
-          // if(newMessage.length > 0) {
+          var newMessage = app.fetch();
+
+          //getting chat data from server//
+
+          //loop throutgh this.fetch data
+          // set each element to connect to li and prepend to the unordered list
+
+
+
+
+            //prepending username + newmessage inside of li to the chat ul
             $(".chatUl").prepend('<li class="chat">' + message.username + ': ' + newMessage + '</li>');
             // this.send();
-            // app.send(newMessage);
-            // $('#chatInput').val("")
-          // }
-        // });
+            //connect out message to this.send data (newMessage or separate variable
+            
         console.log(newMessage, 'test')
       });
 
@@ -47,6 +58,7 @@ let app = {
       data: 'order=-createdAt',
       contentType: 'application/json',
       success: function (data) {
+        // console.log('message recieved')
         this.allMessages = data;
         console.log(this.allMessages)
       },
@@ -57,7 +69,7 @@ let app = {
     });
   },
   clearMessages: function() {
-    $(".chat").html("");
+    $(".chatUl").html("");
   },
   allMessages: this.fetch()
 };
