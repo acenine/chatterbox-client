@@ -2,24 +2,26 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>chatterbox</title>
+    <title>Chatterbox</title>
     <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="underscore/underscore.js">
+    <link href="bower_components/underscore/underscore.js">
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Raleway|Roboto" rel="stylesheet">
 
     <!-- dependencies -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    <script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
       // YOU DO NOT NEED TO EDIT THIS CODE
-      if (!/(&|\?)username=/.test(window.location.search)) {
+        if (!/(&|\?)username=/.test(window.location.search)) {
         var newSearch = window.location.search;
         if (newSearch !== '' & newSearch !== '?') {
           newSearch += '&';
         }
         newSearch += 'username=' + (prompt('What is your name?') || 'anonymous');
+
+        // console.log(newSearch)
         window.location.search = newSearch;
       }
-
       // document.ready(function() {
       //   $('#home').on('click', function() {
       //     alert('working');
@@ -33,18 +35,30 @@
     <script src="scripts/app.js"></script>
   </head>
   <body>
+
     <div class="container">
+
       <div id="main">
+        <!-- nav bar  -->
         <ul class="navUl">
-          <li class="navLi"><a class="active" href="index.html">Home</a></li>
-          <!-- <li class="navLi"><a href="#news">News</a></li> -->
-<!--           <li class="navLi"><a href="#contact">Contact</a></li>
-          <li class="navLi"><a href="#about">About</a></li> -->
+          <li class="navLi"><a class="active" href="index.html">Home</a></li><!-- home button restarts page -->
         </ul>
+
         <center><h1 class="title">Chatterbox</h1></center>
         <h3 class="userTitle">Username</h3>
-        <!-- Your HTML goes here! -->
+        <!-- enter new message here   -->
+        <div>
+          <form>
+            <input class="chatInput" placeholder="Type message here">
+            <input class="sendMessage" type='submit' value="Send Message">
+          </form>
+        </div>
+
       </div>
+
+
+
+      <!-- chats happen -->
       <div id="chats">
         <h3>Chats</h3>
         <ul class="chatUl">
@@ -57,6 +71,9 @@
           <li class="chat"></li>
         </ul>
       </div>
+
     </div>
+
+
   </body>
 </html>

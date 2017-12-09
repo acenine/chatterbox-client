@@ -178,4 +178,14 @@ form input[type=text] {
     list-style-type: none;
     min-height: 40px;
 }
-
+.chatInput {
+    width: 88%;
+    height: 20px;
+    margin-left: 35px;
+    padding-left: 5px;
+}
+.sendMessage {
+    float: right;
+    margin-right: 15px;
+    margin-top: 10px;
+}
