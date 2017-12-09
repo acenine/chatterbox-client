@@ -26,6 +26,9 @@
             app.send();
           });
 
+          // when a room is selected
+          // app.ourMessage.roomname = whatever room name they select
+          // filter our fetch by that room name
 
             //prepending username + newmessage inside of li to the chat ul
             // $(".chatUl").prepend('<li class="chat">' + message.username + ': ' + newMessage + '</li>');
@@ -69,30 +72,32 @@ let app = {
       contentType: 'application/json',
       success: function (data) {
         let allMessages = data.results;
-        allMessages = allMessages.filter(function(elem) {
-          //return if message does not contain any script
-
-          if (!['sp00ky%20ghost', 'Rick%20Astley'].includes(elem.username)) {
-            return elem;
-          }
-          if (!elem.username.includes('%20')) {
-            return elem;
-          }
-          if (!elem.text.includes('<')) {
-            return elem;
-          }
-                    //or.... use .replace to remove scipt from message, while still returning the message - script
-        });
+        // allMessages = allMessages.filter(function(elem) {
+        //   //return if message does not contain any script
+        //   if (!['sp00ky%20ghost', 'Rick%20Astley', 'whistful-gremlin'].includes(elem.username)) {
+        //     return elem;
+        //   }
+        //   if (!elem.username.includes('%20')) {
+        //     return elem;
+        //   }
+        //   if (!elem.text.includes('<')) {
+        //     return elem;
+        //   }
+        //             // or.... use .replace to remove scipt from message, while still returning the message - script
+        // });
         //console.log(filterMessages, 'filtered')
         //use new filtered messages in loop
         for(i = 0; i < allMessages.length; i++) {
           let message = allMessages[i];
           let username = message.username;
           let text = message.text;
+          let roomname = message.roomname;
+          $(".dropdown-content").prepend('<a href="#" class="room">' + roomname + '</a>');
 
           $(".chatUl").prepend('<li class="chat">' + username + ': ' + text + '</li>');
+          // add the room names to the drop down list
         }
-
+        console.log(allMessages)
       },
       // success: function (data) {
       //   let allMessages = data.results;
