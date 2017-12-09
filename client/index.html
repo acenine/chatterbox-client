@@ -12,16 +12,25 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
       // YOU DO NOT NEED TO EDIT THIS CODE
-        if (!/(&|\?)username=/.test(window.location.search)) {
+      if (!/(&|\?)username=/.test(window.location.search)) {
         var newSearch = window.location.search;
         if (newSearch !== '' & newSearch !== '?') {
           newSearch += '&';
         }
         newSearch += 'username=' + (prompt('What is your name?') || 'anonymous');
-
-        // console.log(newSearch)
         window.location.search = newSearch;
       }
+      $(document).ready(() => {
+        $(".chatUl").prepend('<li class="chat">' + message.username + ': ' + message.text + '</li>');
+        $(".sendMessage").click(function(event) {
+          let newMessage = $('#chatInput').val();
+          if(newMessage.length > 0) {
+            $(".chatUl").prepend('<li class="chat">' + message.username + ': ' + newMessage + '</li>');
+            app.send(newMessage);
+            // $('#chatInput').val("")
+          }
+        });
+      });
       // document.ready(function() {
       //   $('#home').on('click', function() {
       //     alert('working');
@@ -49,7 +58,7 @@
         <!-- enter new message here   -->
         <div>
           <form>
-            <input class="chatInput" placeholder="Type message here">
+            <input class="chatInput" id="chatInput" placeholder="Type message here">
             <input class="sendMessage" type='submit' value="Send Message">
           </form>
         </div>
@@ -62,13 +71,6 @@
       <div id="chats">
         <h3>Chats</h3>
         <ul class="chatUl">
-          <li class="chat"></li>
-          <li class="chat"></li>
-          <li class="chat"></li>
-          <li class="chat"></li>
-          <li class="chat"></li>
-          <li class="chat"></li>
-          <li class="chat"></li>
         </ul>
       </div>
 

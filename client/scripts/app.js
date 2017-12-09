@@ -5,7 +5,9 @@
 // 	// name = (prompt('What is your name?')
 // }
 
+
 let app = {
+  server: 'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages',
 	init: function() {},
   send: function() {
     $.ajax({
@@ -28,7 +30,7 @@ let app = {
       // This is the url you should use to communicate with the parse API server.
       url: 'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages',
       type: 'GET',
-      data: 'where={"username":"hrsf86"}',
+      data: 'where={"username":"newhrsf86"}',
       contentType: 'application/json',
       success: function (data) {
         console.log(data);
@@ -38,6 +40,9 @@ let app = {
         console.error('chatterbox: Failed to send message', data);
       }
     });
+  },
+  clearMessages: function() {
+    $(".chat").html("");
   }
 };
 app.fetch();
@@ -47,8 +52,8 @@ app.fetch();
 
 var message = {
   username: 'hrsf86',
-  text: 'testing message',
+  text: 'test message',
   roomname: 'floor 6'
 };
-app.send(message);
+//app.send(message);
 
