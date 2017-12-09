@@ -69,14 +69,41 @@ let app = {
       contentType: 'application/json',
       success: function (data) {
         let allMessages = data.results;
+        allMessages = allMessages.filter(function(elem) {
+          //return if message does not contain any script
+
+          if (!['sp00ky%20ghost', 'Rick%20Astley'].includes(elem.username)) {
+            return elem;
+          }
+          if (!elem.username.includes('%20')) {
+            return elem;
+          }
+          if (!elem.text.includes('<')) {
+            return elem;
+          }
+                    //or.... use .replace to remove scipt from message, while still returning the message - script
+        });
+        //console.log(filterMessages, 'filtered')
+        //use new filtered messages in loop
         for(i = 0; i < allMessages.length; i++) {
           let message = allMessages[i];
           let username = message.username;
           let text = message.text;
+
           $(".chatUl").prepend('<li class="chat">' + username + ': ' + text + '</li>');
         }
 
       },
+      // success: function (data) {
+      //   let allMessages = data.results;
+      //   for(i = 0; i < allMessages.length; i++) {
+      //     let message = allMessages[i];
+      //     let username = message.username;
+      //     let text = message.text;
+      //     $(".chatUl").prepend('<li class="chat">' + username + ': ' + text + '</li>');
+      //   }
+
+      // },
       error: function (data) {
         // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
         console.error('chatterbox: Failed to send message', data);
