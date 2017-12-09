@@ -11,7 +11,7 @@
 
         // app.call(this);
         // console.log(this.fetch().val());
-        $(".chatUl").prepend('<li class="chat">' + message.username + ': ' + message.text + '</li>');
+        // $(".chatUl").prepend('<li class="chat">' + message.username + ': ' + message.text + '</li>');
         // $(".sendMessage").click(function(event) {
           var newMessage = app.fetch();
 
@@ -27,7 +27,7 @@
             $(".chatUl").prepend('<li class="chat">' + message.username + ': ' + newMessage + '</li>');
             // this.send();
             //connect out message to this.send data (newMessage or separate variable
-            
+
         console.log(newMessage, 'test')
       });
 
@@ -58,9 +58,14 @@ let app = {
       data: 'order=-createdAt',
       contentType: 'application/json',
       success: function (data) {
-        // console.log('message recieved')
-        this.allMessages = data;
-        console.log(this.allMessages)
+        let allMessages = data.results;
+        for(i = 0; i < allMessages.length; i++) {
+          let message = allMessages[i];
+          let username = message.username;
+          let text = message.text;
+          $(".chatUl").prepend('<li class="chat">' + username + ': ' + text + '</li>');
+        }
+
       },
       error: function (data) {
         // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
@@ -71,7 +76,7 @@ let app = {
   clearMessages: function() {
     $(".chatUl").html("");
   },
-  allMessages: this.fetch()
+  // allMessages: this.fetch()
 };
 // app.fetch();
 
