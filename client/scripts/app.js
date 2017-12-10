@@ -26,8 +26,15 @@
             app.send();
           });
 
+          $(".dropdown-content").on("click", function(event) {
+            event.preventDefault();
+            console.log("click");
+            app.ourMessage.roomname = $(this).val();
+            //$(".chat").filter('".' + roomname + '"');
+          });
           // when a room is selected
           // app.ourMessage.roomname = whatever room name they select
+
           // filter our fetch by that room name
 
             //prepending username + newmessage inside of li to the chat ul
@@ -39,7 +46,7 @@
       });
 
 let app = {
-  ourMessage : {
+  ourMessage: {
       username: 'fishsticks',
       text: "words",
       roomname: 'floor 6'
@@ -94,10 +101,9 @@ let app = {
           let roomname = message.roomname;
           $(".dropdown-content").prepend('<a href="#" class="room">' + roomname + '</a>');
 
-          $(".chatUl").prepend('<li class="chat">' + username + ': ' + text + '</li>');
+          $(".chatUl").prepend('<li class="chat ' + roomname +'">' + username + ': ' + text + '</li>');
           // add the room names to the drop down list
         }
-        console.log(allMessages)
       },
       // success: function (data) {
       //   let allMessages = data.results;

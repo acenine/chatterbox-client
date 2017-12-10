@@ -239,3 +239,6 @@ form input[type=text] {
 .dropdown:hover .dropbtn {
     background-color: #222;
 }
+.hide {
+    display:none;
+}
